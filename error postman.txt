@@ -1,0 +1,31 @@
+[2023-10-02 12:48:20,850] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\digitalskola\project7\app.py", line 18, in predict
+    result_predict=InsuranceModel().runModel(df,typed='single')
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\digitalskola\project7\modules\insurance_model.py", line 27, in runModel
+    dfTemp = pd.DataFrame(prep.transform(X[[col]]).toarray())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\preprocessing\_encoders.py", line 1027, in transform 
+    X_int, X_mask = self._transform(
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\preprocessing\_encoders.py", line 237, in _transform 
+    self._map_infrequent_categories(X_int, X_mask, ignore_category_indices)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\preprocessing\_encoders.py", line 408, in _map_infrequent_categories
+    if not self._infrequent_enabled:
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OneHotEncoder' object has no attribute '_infrequent_enabled'
+127.0.0.1 - - [02/Oct/2023 12:48:20] "POST /predict HTTP/1.1" 500 -
